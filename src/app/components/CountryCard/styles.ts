@@ -13,7 +13,7 @@ export const Container = styled(Paper)(() => ({
 export const Content = styled(Box)(() => ({
     marginTop: 8,
     paddingBottom: 10,
-    borderBottom: '1px solid #ebebeb'
+    borderBottom: '1px solid #ccc'
 }))
 
 export const CountryInfo = styled(Typography)(() => ({

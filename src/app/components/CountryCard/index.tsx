@@ -1,18 +1,29 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Switch, Typography } from "@mui/material";
 import { CountryCardProps } from "./CountryCard.interface";
 import { Container, Content, CountryInfo, CountryValue } from "./styles";
 
 export function CountryCard(props: CountryCardProps): JSX.Element {
-    const { countryName, capital, currency, language, population } = props;
+    const { 
+        id,
+        countryName, 
+        capital, 
+        currency, 
+        language, 
+        population, 
+        active,
+        flag,
+        oficialName,
+        toggleCheckCountry
+    } = props;
 
     return (
         <Container>
             <Box display="flex" justifyContent="space-between">
                 <Typography variant="h2">{countryName}</Typography>
-                <img src="https://flagcdn.com/br.svg" alt="Brasil" />
+                <img src={flag} alt="Brasil" />
             </Box>
             <Box>
-                <Typography>República federativa do Brasil</Typography>
+                <Typography>{oficialName}</Typography>
             </Box>
             <Content>
                 <Box display="flex">
@@ -32,6 +43,19 @@ export function CountryCard(props: CountryCardProps): JSX.Element {
                     <CountryValue>{population}</CountryValue>
                 </Box>
             </Content>
+            <Box 
+                display="flex" 
+                alignItems="center" 
+                justifyContent="space-between"
+                padding={0.8}
+            >
+                <Typography fontWeight={500}>Ativar visualização</Typography>
+                <Switch
+                    onClick={() => toggleCheckCountry(id)}
+                    color="primary" 
+                    checked={active} 
+                />
+            </Box>
         </Container>
     )
 }

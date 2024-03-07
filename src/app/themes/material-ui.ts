@@ -4,7 +4,7 @@ import { ptBR } from '@mui/material/locale'
 const themeOptions: ThemeOptions = {
   palette: {
     primary: {
-      main: '#e9f6f8',
+      main: '#003249',
       contrastText: '#000'
     },
     background: {
