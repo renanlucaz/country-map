@@ -28,7 +28,7 @@ export function CountryCard(props: CountryCardProps): JSX.Element {
             <Content>
                 <Box display="flex">
                     <CountryInfo>Capital:</CountryInfo>
-                    <CountryValue>{capital}</CountryValue>
+                    <CountryValue>{capital.map(item => `${item}`)}</CountryValue>
                 </Box>
                 <Box display="flex">
                     <CountryInfo>Moeda:</CountryInfo>
@@ -39,15 +39,15 @@ export function CountryCard(props: CountryCardProps): JSX.Element {
                     <CountryValue>{language}</CountryValue>
                 </Box>
                 <Box display="flex">
-                    <CountryInfo>Língua:</CountryInfo>
-                    <CountryValue>{population}</CountryValue>
+                    <CountryInfo>População:</CountryInfo>
+                    <CountryValue>{Intl.NumberFormat('pt-BR').format(population)} habitantes.</CountryValue>
                 </Box>
             </Content>
             <Box 
                 display="flex" 
                 alignItems="center" 
                 justifyContent="space-between"
-                padding={0.8}
+                padding={'7px 0'}
             >
                 <Typography fontWeight={500}>Ativar visualização</Typography>
                 <Switch

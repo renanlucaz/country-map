@@ -18,7 +18,7 @@ export function CountryMaps(): JSX.Element {
     }
 
     return (
-        <ComposableMap height={800} width={800}>
+        <ComposableMap height={550} width={900}>
           <Geographies geography="/features.json">
             {({ geographies }) =>
               geographies.map((geo) => (

@@ -2,8 +2,8 @@ export interface Country {
     id: string;
     countryName: string;
     oficialName: string;
-    capital: string;
-    population: string;
+    capital: string[];
+    population: number;
     currency: string;
     language: string;
     active: boolean;

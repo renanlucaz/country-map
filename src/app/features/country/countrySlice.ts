@@ -22,12 +22,12 @@ export const countrySlice = createSlice({
         return country
       })
     },
-    addToCountryList: (state) => {
-      return state
+    addToCountryList: (state, action) => {
+      state.countryList = [...state.countryList, action.payload]
     }
   },
 })
 
-export const { toggleCheckCountry } = countrySlice.actions
+export const { toggleCheckCountry, addToCountryList } = countrySlice.actions
 
 export default countrySlice.reducer

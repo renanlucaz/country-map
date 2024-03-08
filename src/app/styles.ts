@@ -5,6 +5,7 @@ export const Container = styled(Box)(() => ({
     height: '100vh',
     display: 'flex',
     flex: 1,
+    overflow: 'hidden',
 
     '& path': {
         outline: 'none'

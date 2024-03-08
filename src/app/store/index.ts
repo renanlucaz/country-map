@@ -6,7 +6,7 @@ export const store = configureStore({
   reducer: {
     country: countryReducer,
 
-    [countryApi. reducerPath]: countryApi.reducer
+    [countryApi.reducerPath]: countryApi.reducer
   },
   middleware: (getDefaultMiddleware) => 
     getDefaultMiddleware().concat(countryApi.middleware)
