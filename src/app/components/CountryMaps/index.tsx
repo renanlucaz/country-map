@@ -22,12 +22,10 @@ export function CountryMaps(): JSX.Element {
       }
   }
 
-    const getFillColor = (countryId: string): string => {
+    const isCountryActive = (countryId: string): boolean => {
         const countryActive = countryList.find(country => country.id === countryId)
 
-        if(countryActive && countryActive.active) return '#003249'
-
-        return '#ceeff4'
+        return !!(countryActive && countryActive.active)
     }
 
     return (
@@ -36,9 +34,9 @@ export function CountryMaps(): JSX.Element {
             <Geographies geography="/features.json">
               {({ geographies }) =>
                 geographies.map((geo) => (
-                  <Country isHoverOn={!!countryList.find(country => country.id === geo.id)}>
+                  <Country isHoverOn={isCountryActive(geo.id)}>
                     <Geography 
-                      fill={getFillColor(geo.id)}
+                      fill={isCountryActive(geo.id) ? '#003249' : '#ceeff4'}
                       onClick={() => openModal(geo.id)}
                       strokeWidth={0.8}
                       stroke="#fff"
