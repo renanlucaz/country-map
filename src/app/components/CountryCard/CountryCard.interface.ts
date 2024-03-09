@@ -8,5 +8,6 @@ export interface CountryCardProps {
     language: string;
     active: boolean;
     flag: string;
-    toggleCheckCountry: (countryId: string) => void 
+    mapLink: string;
+    toggleCheckCountry: (countryId: string) => void;
 }

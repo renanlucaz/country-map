@@ -10,32 +10,19 @@ import { addToCountryList } from "../../countrySlice";
 
 export function SearchCountry() {
     const [searchValue, setSearchValue] = useState('');
-    const countryList = useSelector(((state: RootState) => state.country.countryList))
     const { data } = useGetCountryListByNameQuery(searchValue, { skip: !searchValue })
+    
+    const countryList = useSelector(((state: RootState) => state.country.countryList))
     const dispatch = useDispatch()
 
-    const countryOptions = data?.map(country => ({ 
-        id: country.cca3, 
-        label: country.translations.por.common, 
-        flag: country.flags.svg,
-        population: country.population,
-        countryName: country.translations.por.common,
-        currency: country.currencies && [country.currencies]?.map(currency => {
-            const currencyCode = Object.keys(currency)[0];
-  
-            return currency[currencyCode].name;
-        })?.join(', '),
-        language: country.languages && [country.languages]?.map(language => {
-            const languageCode = Object.keys(language)[0];
-  
-            return language[languageCode];
-        })?.join(', '),
-        capital: country.capital,
-        active: true,
-    })).filter(country => !countryList.map(item => item.id).includes(country.id)) || []
+    const countryOptions = data?.map(country => ({ label: country.countryName, id: country.id }))
+        .filter(country => !countryList.map(item => item.id)
+        .includes(country.id)) || []
 
-    const addCountryToList = (country: any) => {
-        if(country) {
+    const addCountryToList = (countryId: string | undefined) => {
+        if(countryId) {
+            const country = data?.find(country => country.id === countryId)
+
             dispatch(addToCountryList(country))
         }
 
@@ -47,7 +34,8 @@ export function SearchCountry() {
             disablePortal
             id="combo-box-demo"
             options={countryOptions}
-            onChange={(e, value) => addCountryToList(value)}
+            onChange={(e, value) => addCountryToList(value?.id)}
+            isOptionEqualToValue={(option, value) => option.id === value.id}
             sx={{ 
                 display: 'inline-block',
                 '& input': {

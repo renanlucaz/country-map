@@ -5,14 +5,14 @@ const themeOptions: ThemeOptions = {
   palette: {
     primary: {
       main: '#003249',
-      contrastText: '#000'
+      contrastText: '#fff'
     },
     background: {
       default: '#fff'
     }
   },
   typography: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Archivo',
     h1: {
       fontSize: '36px',
       fontWeight: 'bold',
@@ -24,6 +24,27 @@ const themeOptions: ThemeOptions = {
       color: '#454545'
     },
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        contained: {
+          boxShadow: 'none',
+          borderRadius: '8px',
+          padding: '10px 40px',
+
+          '& p': {
+            fontSize: '14px',
+            fontWeight: '500',
+            textTransform: 'initial'
+          },
+
+          '&:hover': {
+            boxShadow: 'none'
+          }
+        }
+      }
+    },
+  }
 }
 
 export const theme = createTheme(themeOptions, ptBR)

@@ -26,3 +26,12 @@ export const CountryValue = styled(Typography)(() => ({
     marginLeft: 5,
     fontSize: 14
 }))
+
+export const SeeDetails = styled(Typography)(() => ({
+    fontSize: 14,
+    fontWeight: 500,
+
+    '&:hover': {
+        textDecoration: 'underline',
+    }
+}))

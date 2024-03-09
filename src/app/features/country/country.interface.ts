@@ -8,6 +8,7 @@ export interface Country {
     language: string;
     active: boolean;
     flag: string;
+    mapLink: string;
 }
 
 export type ICountryList = Country[]

@@ -1,12 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { ICountryList } from './country.interface'
+import { Country, ICountryList } from './country.interface'
 
 export interface CountryState {
-  countryList: ICountryList | []
+  countryList: ICountryList | [];
+  selectedCountry: Country | null;
+  countryModalOpen: boolean;
 }
 
 const initialState: CountryState = {
     countryList: [],
+    selectedCountry: null,
+    countryModalOpen: false
 }
 
 export const countrySlice = createSlice({
@@ -24,10 +28,30 @@ export const countrySlice = createSlice({
     },
     addToCountryList: (state, action) => {
       state.countryList = [...state.countryList, action.payload]
+    },
+    removeFromCountryList: (state, action) => {
+      console.log(action.payload)
+      state.countryList = state.countryList.filter(country => country.id !== action.payload.id)
+    },
+    openCountryModal: (state) => {
+      state.countryModalOpen = true
+    },
+    closeCountryModal: (state) => {
+      state.countryModalOpen = false
+    },
+    selectCountry: (state, action) => {
+      state.selectedCountry = action.payload
     }
   },
 })
 
-export const { toggleCheckCountry, addToCountryList } = countrySlice.actions
+export const { 
+  toggleCheckCountry, 
+  addToCountryList, 
+  removeFromCountryList, 
+  closeCountryModal, 
+  openCountryModal,
+  selectCountry
+} = countrySlice.actions
 
 export default countrySlice.reducer

@@ -17,7 +17,7 @@ export function Country(): JSX.Element {
                 <CountryList>
                 {countryList.map(country => (
                     <CountryCard 
-                        key={country.id}
+                        key={country.countryName}
                         id={country.id}
                         capital={country.capital}
                         countryName={country.countryName}
@@ -27,6 +27,7 @@ export function Country(): JSX.Element {
                         population={country.population}
                         active={country.active}
                         flag={country.flag}
+                        mapLink={country.mapLink}
                         toggleCheckCountry={() => dispatch(toggleCheckCountry(country.id))}
                     />
                 ))}
