@@ -30,7 +30,7 @@ export function CountryModal(props: CountryModalProps): JSX.Element {
         onClose()
     }
 
-    if(!country) return <Typography>Carregando...</Typography>
+    if(!country) return <></>
 
     return (
         <Modal
