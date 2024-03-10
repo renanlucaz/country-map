@@ -18,6 +18,7 @@ export function CountryCard(props: CountryCardProps): JSX.Element {
         active,
         flag,
         oficialName,
+        mapLink,
         toggleCheckCountry
     } = props;
     const countryModalOpen = useSelector((state: RootState) => state.country.countryModalOpen)
@@ -35,6 +36,7 @@ export function CountryCard(props: CountryCardProps): JSX.Element {
             active,
             flag,
             oficialName,
+            mapLink
         }))
     }
 
